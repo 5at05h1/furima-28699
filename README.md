@@ -50,38 +50,41 @@ Things you may want to cover:
 | comment   | text       | null: false |
 | status    | integer    | null: false |
 | shipping  | integer    | null: false |
-| date      | datetime   | null: false |
+| date      | integer    | null: false |
 | user      | references | null: false, foreign_key: true |
 
 ### Association
 
 - has_one :purchase
-- belongs_to :users
+- belongs_to :user
 
 
 ## purchases テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| purchase | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_many :shippings
+- belongs_to :user
+- belongs_to :item
+- has_one :shippings
 
 
 ## shippings テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
-| address | string     | null: false |
-| phone   | integer    | null: false |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| user         | references | null: false, foreign_key: true |
+| item         | references | null: false, foreign_key: true |
+| postal_code  |i nteger    | null: false |
+| prefectures  | integer    | null: false |
+| municipality | string     | null: false |
+| address      | string     | null: false |
+| building     | string     | null: false |
+| phone        | string     | null: false |
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase
