@@ -50,7 +50,6 @@ Things you may want to cover:
 | user      | references | null: false, foreign_key: true |
 
 
-
 ### Association
 
 - has_one :purchases
