@@ -78,7 +78,7 @@ Things you may want to cover:
 | ------------ | ---------- | ------------------------------ |
 | user         | references | null: false, foreign_key: true |
 | item         | references | null: false, foreign_key: true |
-| postal_code  |i nteger    | null: false |
+| postal_code  | integer    | null: false |
 | prefectures  | integer    | null: false |
 | municipality | string     | null: false |
 | address      | string     | null: false |
