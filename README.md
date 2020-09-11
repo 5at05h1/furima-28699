@@ -31,28 +31,33 @@ Things you may want to cover:
 | email    | string | null: false |
 | password | string | null: false |
 | nickname | string | null: false |
-| birthday | string | null: false |
+| birthday | date   | null: false |
 
+### Association
+
+- has_many :items
+- has_many :purchases
 
 
 ## items テーブル
 
 | Column    | Type       | Options     |
 | --------- | ---------- | ----------- |
-| item_name | string     | null: false |
-| category  | string     | null: false |
+| name      | string     | null: false |
+| category  | integer    | null: false |
 | price     | integer    | null: false |
 | delivery  | integer    | null: false |
 | comment   | text       | null: false |
-| status    | string     | null: false |
-| shipping  | string     | null: false |
+| status    | integer    | null: false |
+| shipping  | integer    | null: false |
 | date      | datetime   | null: false |
 | user      | references | null: false, foreign_key: true |
 
-
 ### Association
 
-- has_one :purchases
+- has_one :purchase
+- belongs_to :users
+
 
 ## purchases テーブル
 
@@ -60,11 +65,23 @@ Things you may want to cover:
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
 | item    | references | null: false, foreign_key: true |
-| address | string     | null: false |
-| credit  | integer    | null: false |
-| phone   | integer    | null: false |
-
 
 ### Association
 
+- belongs_to :users
 - belongs_to :items
+- has_many :shippings
+
+
+## shippings テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+| address | string     | null: false |
+| phone   | integer    | null: false |
+
+### Association
+
+- belongs_to :purchases
