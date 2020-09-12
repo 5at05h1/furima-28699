@@ -25,13 +25,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| nickname | string | null: false |
-| birthday | date   | null: false |
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+| surname      | string | null: false |
+| name         | string | null: false |
+| surname_kana | string | null: false |
+| name_kana    | string | null: false |
+| email        | string | null: false |
+| password     | string | null: false |
+| nickname     | string | null: false |
+| birthday     | date   | null: false |
 
 ### Association
 
@@ -63,7 +66,9 @@ Things you may want to cover:
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
-| purchase | references | null: false, foreign_key: true |
+| user     | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
+
 
 ### Association
 
@@ -76,9 +81,7 @@ Things you may want to cover:
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| user         | references | null: false, foreign_key: true |
-| item         | references | null: false, foreign_key: true |
-| postal_code  | integer    | null: false |
+| postal_code  | string     | null: false |
 | prefectures  | integer    | null: false |
 | municipality | string     | null: false |
 | address      | string     | null: false |
