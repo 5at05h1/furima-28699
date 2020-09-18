@@ -10,6 +10,16 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = "000000"
         expect(@user).to be_valid
       end
+      it "passwordが半角英数字混合であれば登録できる" do
+        @user.password = "000aaa"
+        @user.password_confirmation = "000aaa"
+        expect(@user).to be_valid
+      end
+      it "emailは@を含んでいれば登録できる" do
+        @user.email = "zzzz@zzz"
+        @user.email_confirmation = "zzzz@zzz"
+        expect(@user).to be_valid
+      end
     end
     context '新規登録がうまくいかないとき' do
       it "nicknameが空だと登録できない" do
