@@ -79,6 +79,26 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is half-width alphanumerric characters")
       end
+      it "surnameが全角でなければ登録できない" do
+        @user.surname = "yamada"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Surname can't be full angle")
+      end
+      it "nameが全角でなければ登録できない" do
+        @user.name = "tarou"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Name can't be full angle")
+      end
+      it "surname_kanaはカタカナでなければ登録できない" do
+        @user.surname_kana = "やまだ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Surname_kana can't be katakana")
+      end
+      it "name_kanaはカタカナでなければ登録できない" do
+        @user.name_kana = "たろう"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Surname_kana can't be katanaka")
+      end
     end
   end
 end
