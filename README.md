@@ -53,7 +53,7 @@ Things you may want to cover:
 | comment   | text       | null: false |
 | status    | integer    | null: false |
 | shipping  | integer    | null: false |
-| date      | integer    | null: false |
+| s_date    | integer    | null: false |
 | user      | references | null: false, foreign_key: true |
 
 ### Association
