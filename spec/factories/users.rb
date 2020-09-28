@@ -1,6 +1,4 @@
 FactoryBot.define do
-  has_many :items
-  
   factory :user do
     nickname              {"abe"}
     email                 {"kkk@gmail.com"}

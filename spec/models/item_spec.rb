@@ -28,20 +28,40 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category_id can't be blank")
       end
+      it "category_idが1では出品できない" do
+        @item.category_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category_id can't be 1")
+      end
       it "status_idが空では出品できない" do
         @item.status_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Status_id can't be blank")
+      end
+      it "status_idが1では出品できない" do
+        @item.status_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status_id can't be 1")
       end
       it "delivery_idが空では出品できない" do
         @item.delivery_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery_id can't be blank")
       end
+      it "delivery_idが1では出品できない" do
+        @item.delivery_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery_id can't be 1")
+      end
       it "s_date_idが空では出品できない" do
         @item.s_date_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("SDate_id can't be blank")
+      end
+      it "s_date_idが1では出品できない" do
+        @item.s_date_id = ""
+        @item.valid?
+        expect(@item.errors.full_messages).to include("SDate_id can't be 1")
       end
       it "priceが空では出品できない" do
         @item.price = ""
