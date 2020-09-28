@@ -1,4 +1,6 @@
 FactoryBot.define do
+  belongs_to :user
+
   factory :item do
     name            {"Apple"}
     comment         {"ロゴ"}

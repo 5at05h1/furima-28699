@@ -9,6 +9,6 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :name, :comment, :category_id, :status_id, :shipping_id, :delivery_id, :s_date_id, :price, :user, presence: true
-
   validates :category_id, :status_id, :shipping_id, :delivery_id, :s_date_id, numericality: { other_than: 1 }
+  validates :price, numericality: { only_integer: true }, inclusion: { in 300..9999999 }
 end
