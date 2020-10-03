@@ -74,10 +74,10 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shippings
+- has_one :orders
 
 
-## shippings テーブル
+## orders テーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
