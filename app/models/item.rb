@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery
   belongs_to_active_hash :s_date
   belongs_to :user
+  has_one :purchase
   has_one_attached :image
 
   validates :name, :comment, :category_id, :status_id, :shipping_id, :delivery_id, :s_date_id, :price, :user, :image, presence: true
