@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.integer    :prefectures,    null: false
       t.string     :municipality,   null: false
       t.string     :address,        null: false
-      t.string     :building,
+      t.string     :building
       t.string     :phone,          null: false
       t.references :purchase,       null: false, foreign_key: true
 
