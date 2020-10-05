@@ -4,5 +4,7 @@ class Order < ApplicationRecord
   belongs_to :purchase
 
   validates :postal_code, :prefectures_id, :municipality, :address, :phone, presence: true
+  validates :postal_code, inclusion: { in: - }
   validates :prefectures_id, { other_than: 1 }
+  validates :phone, { only_integer: true }, length: { maximum: 11 }
 end
