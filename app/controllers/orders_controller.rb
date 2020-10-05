@@ -2,11 +2,17 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
 
   def index
-    @orders = Order.all
+    @order = Order.new
   end
 
   def create
-    @order = Order.create(order_params)
+    @order = Order.new(order_params)
+    if @order.valid?
+      @order.save
+      return redirect_to root_path
+    else
+      render 'index'
+    end
   end
 
   private
