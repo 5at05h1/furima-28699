@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @order = Order.new
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = OrderDonation.new(order_params)
     if @order.valid?
       pay_item
       @order.save
@@ -19,14 +19,18 @@ class OrdersController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def order_params
-    params.permit(:postal_code, :prefectures_id, :municipality, :address, :phone).merge(token: params[:token])
+    params.permit(:item_id, :postal_code, :prefectures_id, :municipality, :address, :phone).merge(token: params[:token])
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Peyjp::Charge.create(
-      amount: order_params[:postal_code, :prefectures_id, :municipality, :address, :phone],
+      amount: order_params[:price],
       card: order_params[:token],
       currency: 'jpy'
     )
