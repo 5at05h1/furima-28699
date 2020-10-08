@@ -13,7 +13,7 @@ class OrderDonation
   end
 
   def save
-    Order.create(postal_code: postal_code, prefectures_id: prefectures_id, municipality: municipality, address: address, phone: phone,)
-    Purchase.create(item_id: item_id, user_id: user_id,)
+    purchase = Purchase.create(item_id: item_id, user_id: user_id)
+    Order.create(postal_code: postal_code, prefectures_id: prefectures_id, municipality: municipality, address: address, phone: phone, purchase_id: purchase.id)
   end
 end
