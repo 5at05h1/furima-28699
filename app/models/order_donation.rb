@@ -1,6 +1,6 @@
 class OrderDonation
   include ActiveModel::Model
-  attr_accessor :item_id, :postal_code, :prefectures_id, :municipality, :address, :phone, :token
+  attr_accessor :item_id, :user_id, :postal_code, :prefectures_id, :municipality, :address, :phone
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
@@ -14,6 +14,6 @@ class OrderDonation
 
   def save
     Order.create(postal_code: postal_code, prefectures_id: prefectures_id, municipality: municipality, address: address, phone: phone,)
-    Purchase.create(item_id: item_id, token: token,)
+    Purchase.create(item_id: item_id, user_id: user_id,)
   end
 end
