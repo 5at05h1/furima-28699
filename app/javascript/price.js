@@ -4,11 +4,9 @@ window.addEventListener('load', function(){
   const profit =document.getElementById("profit")
   price.addEventListener('input', function(){
     const integer = price.value
-    Math.floor(calculation)
-    Math.floor(rieki)
     const calculation = integer * 0.1
     const rieki = integer - calculation
-    fee.innerHTML = calculation
-    profit.innerHTML = rieki
+    fee.innerHTML = Math.floor(calculation)
+    profit.innerHTML = Math.floor(rieki)
   })
 })
