@@ -4,6 +4,6 @@ FactoryBot.define do
     prefectures_id    {15}
     municipality      {"横浜市鶴見区"}
     address           {"末広町1-1"}
-    phone             {0123456789}
+    phone             {00000000000}
   end
 end
